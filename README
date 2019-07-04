@@ -7,14 +7,14 @@ es/src/main/java/插入数据.java            --- 将创建的数据插入 es
 
 
 用到的 es 语句
-
+# 简单查询
 GET _search
 {
   "query": {
     "match_all": {}
   }
 }
-
+# 创建索引的结构
 PUT phonebills
 {
   "mappings": {
@@ -40,7 +40,9 @@ PUT phonebills
     }
   }
 }
+# 查询索引中的个数
 GET phonebills/_count
+# 查询索引符合条件的个数
 GET phonebills/_count
 {
   "query": {
@@ -53,9 +55,11 @@ GET phonebills/_count
 }
 
 GET phonebills/_search
+
+# 删除索引
 DELETE phonebills
 
-
+# search after step 1
 GET phonebills/_search
 {
   "query": {
@@ -77,6 +81,8 @@ GET phonebills/_search
     }
   ]
 }
+
+# search after step 2
 
 GET phonebills/_search
 {
