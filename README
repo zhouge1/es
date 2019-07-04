@@ -1,0 +1,106 @@
+src/main/java
+es/src/main/java/CreateData.java  --- 创建数据
+es/src/main/java/分页与遍历.java   --- 测试 search after api
+es/src/main/java/插入数据.java     --- 将创建的数据插入 es
+
+
+
+
+用到的 es 语句
+
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+PUT phonebills
+{
+  "mappings": {
+    "properties": {
+      "name": {
+        "type": "keyword"
+      },
+      "listeners": {
+        "type": "keyword"
+      },
+      "starttime": {
+        "type": "date"
+      },
+      "endtime": {
+        "type": "date"
+      },
+      "position": {
+        "type": "geo_point"
+      },
+      "content": {
+        "type": "text"
+      }
+    }
+  }
+}
+GET phonebills/_count
+GET phonebills/_count
+{
+  "query": {
+    "term": {
+      "name": {
+        "value": "鲁仲连"
+      }
+    }
+  }
+}
+
+GET phonebills/_search
+DELETE phonebills
+
+
+GET phonebills/_search
+{
+  "query": {
+    "term": {
+      "name": {
+        "value": "鲁仲连"
+      }
+    }
+  }, 
+  "size": 5,
+  "sort": [
+    {
+      "name": {
+        "order": "desc"
+      },
+      "_id":{
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+GET phonebills/_search
+{
+  "query": {
+    "term": {
+      "name": {
+        "value": "鲁仲连"
+      }
+    }
+  },
+  "size": 5,
+  "search_after": [
+    "鲁仲连",
+    "zzzVumsBieuR7aAcDbV-"
+  ],
+  "sort": [
+    {
+      "name": {
+        "order": "desc"
+      },
+      "_id": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
